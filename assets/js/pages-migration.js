@@ -23,6 +23,8 @@
       onSelect: (name) => { st.scope = 'one'; TW.setCounty(name, true); paintScope(); update(true); },
       onHover: (key) => $$('#mPanel .dest').forEach((d) => d.classList.toggle('hl', d.dataset.key === key)),
       focusColor: () => (st.mode === 'in' ? TW.T.in : TW.T.out),
+      padTop: () => ($('.map-top') ? $('.map-top').offsetHeight : 36) + 22,
+      padBottom: () => ($('.map-bottom') ? $('.map-bottom').offsetHeight : 50) + ($('.map-legend') ? $('.map-legend').offsetHeight : 50) + 44,
     });
 
     const update = (focusChanged) => {

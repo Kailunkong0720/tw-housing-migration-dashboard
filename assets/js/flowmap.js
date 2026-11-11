@@ -47,7 +47,7 @@
 
   TW.flowMap = function (el, opts) {
     opts = opts || {};
-    const HOME = [[21.85, 119.95], [25.35, 122.05]], PAD = { paddingTopLeft: [10, 52], paddingBottomRight: [10, 118] };  // 留出上下控制列的空間
+    const HOME = [[21.85, 119.95], [25.35, 122.05]], pad = () => ({ paddingTopLeft: [10, opts.padTop ? opts.padTop() : 52], paddingBottomRight: [10, opts.padBottom ? opts.padBottom() : 118] });  // 留出上下控制列的空間 (窄螢幕控制列會換行)
     const map = L.map(el, { center: [23.6, 121], zoom: 8, zoomSnap: .25, zoomDelta: .5, minZoom: 6, maxZoom: 12, maxBounds: [[19.5, 115], [28.5, 126]], attributionControl: true, wheelPxPerZoomLevel: 110 });
     const tiles = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '底圖 &copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors' }).addTo(map);
     map.getPane('tilePane').classList.add('dim');
@@ -151,12 +151,12 @@
       setFlows(list, f) { flows = list || []; focus = f || null; geo.eachLayer((l) => l.setStyle(styleOf(l.feature.properties.name))); draw(); },
       highlight(key) { hl = key; svg.classList.toggle('dimmed', !!key); Array.prototype.forEach.call(svg.querySelectorAll('.arrow'), (g) => g.classList.toggle('hl', g.getAttribute('data-key') === key)); },
       fit(names) { const ll = names.filter((n) => TW.ANCHOR[n]).map((n) => TW.ANCHOR[n]); if (ll.length > 1) map.flyToBounds(L.latLngBounds(ll).pad(.3), { maxZoom: 9.5, duration: .6 }); },
-      home() { map.flyToBounds(HOME, Object.assign({ duration: .5 }, PAD)); },
+      home() { map.flyToBounds(HOME, Object.assign({ duration: .5 }, pad())); },
       dim(on) { map.getPane('tilePane').classList.toggle('dim', on); },
       refresh() { if (!dead) { map.invalidateSize(); draw(); } },
       destroy() { dead = true; map.off(); map.remove(); },
     };
-    setTimeout(() => { if (dead) return; map.invalidateSize(); map.fitBounds(HOME, Object.assign({ animate: false }, PAD)); draw(); }, 60);
+    setTimeout(() => { if (dead) return; map.invalidateSize(); map.fitBounds(HOME, Object.assign({ animate: false }, pad())); draw(); }, 60);
     return api;
   };
 })();

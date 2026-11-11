@@ -322,6 +322,8 @@ table.tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
   .c3 { grid-column: span 12; }
   .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .focus-pick span, .search kbd, #fsBtn, .collapse-btn { display: none; }
-  #flowMap { height: 66vh; min-height: 440px; }
+  #flowMap { height: 80vh; min-height: 560px; }
+  .map-legend .legend { display: none; }
+  .map-legend { padding: 5px 10px; }
   .page-head h1 { font-size: 20px; }
 }
