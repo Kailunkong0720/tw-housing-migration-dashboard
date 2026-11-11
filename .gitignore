@@ -1,0 +1,8 @@
+# 原始下載檔 (約 490 MB，可用 scripts/update_all.py 重新下載)
+data_raw/
+
+__pycache__/
+*.pyc
+*.part
+.DS_Store
+Thumbs.db

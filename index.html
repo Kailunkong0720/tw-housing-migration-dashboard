@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-Hant" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>島內移動｜台灣房市 × 人口遷徙戰情室</title>
+  <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+  <div class="app" id="app">
+    <!-- ============ 側邊欄 ============ -->
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#/overview">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="30" height="30"><path d="M5 22c6-1 9-5 11-11" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M12 8l5 2-2 5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M19 26V17l4-3 4 3v9z" fill="currentColor" opacity=".9"/></svg>
+        </span>
+        <span class="brand-text"><b>島內移動</b><small>房市 × 遷徙戰情室</small></span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <div class="nav-group">總覽</div>
+        <a href="#/overview" data-route="overview"><i data-ic="grid"></i><span>全台總覽</span></a>
+
+        <div class="nav-group">房市行情</div>
+        <a href="#/deals" data-route="deals"><i data-ic="trend"></i><span>成交行情</span><em>實價登錄</em></a>
+        <a href="#/asking" data-route="asking"><i data-ic="tag"></i><span>開價 vs 成交</span><em>議價率</em></a>
+        <a href="#/districts" data-route="districts"><i data-ic="pin"></i><span>行政區探索</span></a>
+
+        <div class="nav-group">人口遷徙</div>
+        <a href="#/map" data-route="map"><i data-ic="flow"></i><span>遷徙流向地圖</span><em class="hot">箭頭</em></a>
+        <a href="#/migration" data-route="migration"><i data-ic="swap"></i><span>遷入遷出趨勢</span></a>
+
+        <div class="nav-group">交叉分析</div>
+        <a href="#/relation" data-route="relation"><i data-ic="scatter"></i><span>房價 × 遷徙</span></a>
+
+        <div class="nav-group">關於</div>
+        <a href="#/sources" data-route="sources"><i data-ic="db"></i><span>資料來源與方法</span></a>
+      </nav>
+
+      <div class="side-foot">
+        <div class="side-note">資料更新 <b id="builtAt">—</b></div>
+        <button class="collapse-btn" id="collapseBtn" title="收合側邊欄" aria-label="收合側邊欄"><i data-ic="chev"></i></button>
+      </div>
+    </aside>
+
+    <!-- ============ 主畫面 ============ -->
+    <div class="main">
+      <header class="topbar">
+        <button class="icon-btn only-mobile" id="menuBtn" aria-label="選單"><i data-ic="menu"></i></button>
+        <div class="search">
+          <i data-ic="search"></i>
+          <input id="search" type="search" placeholder="搜尋縣市或行政區，例如：板橋、竹北、台中…" autocomplete="off">
+          <kbd>/</kbd>
+          <div class="search-pop" id="searchPop" hidden></div>
+        </div>
+        <label class="focus-pick" title="各頁面的「關注縣市」">
+          <span>關注縣市</span>
+          <select id="focusCounty"></select>
+        </label>
+        <button class="icon-btn" id="fsBtn" title="全螢幕" aria-label="全螢幕"><i data-ic="full"></i></button>
+        <button class="icon-btn" id="themeBtn" title="切換深/淺色" aria-label="切換深淺色"><i data-ic="moon"></i></button>
+      </header>
+
+      <main class="view" id="view" tabindex="-1"></main>
+
+      <footer class="foot">
+        <span>資料：內政部實價登錄、內政部戶政司、國泰房地產指數 · 底圖 © OpenStreetMap contributors</span>
+        <a href="#/sources">資料來源與方法 →</a>
+      </footer>
+    </div>
+  </div>
+
+  <div class="tip" id="tip" hidden></div>
+
+  <script src="vendor/echarts/echarts.min.js"></script>
+  <script src="vendor/leaflet/leaflet.js"></script>
+  <script src="data/bundle.js"></script>
+  <script src="assets/js/core.js"></script>
+  <script src="assets/js/flowmap.js"></script>
+  <script src="assets/js/pages-market.js"></script>
+  <script src="assets/js/pages-migration.js"></script>
+  <script src="assets/js/pages-misc.js"></script>
+  <script>TW.start();</script>
+</body>
+</html>
