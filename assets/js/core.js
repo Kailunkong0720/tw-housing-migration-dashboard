@@ -1,4 +1,4 @@
-/* 島內移動 — 核心：資料存取、工具、主題、路由、共用圖表設定 */
+/* 台灣房價與人口遷徙觀測站 — 核心：資料存取、工具、主題、路由、共用圖表設定 */
 (function () {
   'use strict';
   const D = window.TWDATA;
@@ -194,7 +194,7 @@
     cleanup = TW.pages[r](view) || null;
     if (r !== lastRoute) { window.scrollTo(0, 0); lastRoute = r; }
     paintIcons(view);
-    document.title = ($('#nav a.active span') || {}).textContent + '｜島內移動';
+    document.title = ($('#nav a.active span') || {}).textContent + '｜台灣房價與人口遷徙觀測站';
   };
   TW.head = (crumb, title, desc, asof) => '<div class="page-head"><div><div class="crumb">' + esc(crumb) + '</div><h1>' + esc(title) + '</h1><p>' + desc + '</p></div><span class="spacer"></span>' + (asof ? '<span class="asof">' + asof + '</span>' : '') + '</div>';
   TW.go = (r) => { if (TW.route() === r) TW.render(); else location.hash = '#/' + r; };
