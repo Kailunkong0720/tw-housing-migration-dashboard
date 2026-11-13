@@ -1,5 +1,8 @@
 # 台灣房價與人口遷徙觀測站
 
+🔗 **線上版**：https://kailunkong0720.github.io/tw-housing-migration-dashboard/
+📄 **作品說明**（動機、方法、發現、限制）：[PORTFOLIO.md](PORTFOLIO.md)
+
 全台房地產「開價與成交」以及「戶籍遷入遷出」的互動式儀表板，資料涵蓋 2020 年至今，用來觀察房價與人口流動的關係。
 
 ## 頁面
